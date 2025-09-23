@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengali Literature Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        select, button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            min-width: 100px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .ai-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+        
+        .results {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .result-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .question {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .explanation {
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        
+        .ai-enhanced {
+            background-color: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding-left: 10px;
+        }
+        
+        .meta {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .stats {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* Evaluation section styles */
+        .eval-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px dashed #dee2e6;
+        }
+
+        .eval-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .eval-toggle {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .eval-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .eval-btn {
+            padding: 8px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .eval-btn.quick { background-color: #17a2b8; }
+        .eval-btn.full { background-color: #ffc107; color: black; }
+        .eval-btn.ab { background-color: #dc3545; }
+
+        .eval-results {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            font-size: 13px;
+            border: 1px solid #dee2e6;
+        }
+
+        .eval-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .eval-metric {
+            text-align: center;
+            padding: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+
+        .eval-metric-value {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .eval-note {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🇧🇩 Bengali Literature Search</h1>
+        <p>Advanced RAG System with Hybrid Search + AI Enhancement</p>
+    </div>
+
+    <!-- Evaluation Section (Collapsible) -->
+    <div class="eval-section">
+        <div class="eval-header">
+            <div>
+                <strong>🎯 System Evaluation</strong>
+                <span style="font-size: 12px; color: #6c757d; margin-left: 10px;">For developers & researchers</span>
+            </div>
+            <button class="eval-toggle" onclick="toggleEvalSection()">Show</button>
+        </div>
+        
+        <div id="evalControls" style="display: none;">
+            <p style="font-size: 13px; color: #6c757d; margin: 0 0 15px 0;">
+                Performance testing tools - <strong>End users don't need this section</strong>
+            </p>
+            
+            <div class="eval-controls">
+                <button class="eval-btn quick" onclick="runQuickEval()">⚡ Quick Test (30s)</button>
+                <button class="eval-btn full" onclick="runFullEval()">📊 Full Evaluation (2min)</button>
+                <button class="eval-btn ab" onclick="runABTest()">🔬 A/B Test (5min)</button>
+                <button class="eval-btn" style="background-color: #6c757d;" onclick="getEvalInfo()">ℹ️ Info</button>
+            </div>
+            
+            <div id="evalResults" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search in Bengali or English (e.g., রবীন্দ্রনাথ গীতাঞ্জলি)" />
+        
+        <div class="controls">
+            <select id="searchType">
+                <option value="hybrid">Hybrid (Best)</option>
+                <option value="dense">Semantic Only</option>
+                <option value="sparse">Keyword Only</option>
+            </select>
+            
+            <select id="topK">
+                <option value="3">3 Results</option>
+                <option value="5" selected>5 Results</option>
+                <option value="10">10 Results</option>
+            </select>
+            
+            <div class="ai-toggle">
+                <input type="checkbox" id="useAI" />
+                <label for="useAI">🤖 AI Enhanced</label>
+            </div>
+            
+            <button onclick="search()">Search</button>
+            <button onclick="clearResults()" style="background-color: #6c757d;">Clear</button>
+        </div>
+    </div>
+
+    <div id="error" class="error" style="display: none;"></div>
+    <div id="loading" class="loading" style="display: none;">🔍 Searching...</div>
+    <div id="stats" class="stats" style="display: none;"></div>
+    <div id="results" class="results" style="display: none;"></div>
+
+    <script>
+        // Toggle evaluation section
+        function toggleEvalSection() {
+            const controls = document.getElementById('evalControls');
+            const button = document.querySelector('.eval-toggle');
+            
+            if (controls.style.display === 'none') {
+                controls.style.display = 'block';
+                button.textContent = 'Hide';
+            } else {
+                controls.style.display = 'none';
+                button.textContent = 'Show';
+            }
+        }
+
+        // Search function
+        async function search() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) {
+                showError('Please enter a search query');
+                return;
+            }
+
+            showLoading();
+            hideError();
+            hideResults();
+
+            try {
+                const searchType = document.getElementById('searchType').value;
+                const topK = parseInt(document.getElementById('topK').value);
+                const useAI = document.getElementById('useAI').checked;
+
+                const response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        top_k: topK,
+                        search_type: searchType,
+                        use_llm: useAI
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Search failed');
+                }
+
+                displayResults(data);
+
+            } catch (error) {
+                console.error('Search error:', error);
+                showError('Search failed: ' + error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Display search results
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            const statsDiv = document.getElementById('stats');
+
+            // Show stats
+            const responseTime = data.response_time_ms.toFixed(1);
+            const aiStatus = data.features_used.llm_enhancement ? '🤖 AI Enhanced' : '';
+            statsDiv.innerHTML = `Found ${data.total_results} results in ${responseTime}ms ${aiStatus}`;
+            statsDiv.style.display = 'block';
+
+            if (data.results.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+                resultsDiv.style.display = 'block';
+                return;
+            }
+
+            // Display results
+            let html = '';
+            data.results.forEach((result, index) => {
+                const isAIEnhanced = result.llm_score && result.llm_score > result.dense_score;
+                const enhancedClass = isAIEnhanced ? 'ai-enhanced' : '';
+                
+                html += `
+                    <div class="result-item ${enhancedClass}">
+                        <div class="question">${index + 1}. ${result.question}</div>
+                        <div class="explanation">${result.explanation}</div>
+                        <div class="meta">
+                            <span>Score: ${(result.relevance_score * 100).toFixed(1)}%</span>
+                            <span>Difficulty: ${getDifficultyText(result.difficulty)}</span>
+                            ${isAIEnhanced ? '<span>🤖 AI Enhanced</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+
+        // Evaluation functions
+        async function getEvalInfo() {
+            showEvalLoading("Getting evaluation info...");
+            try {
+                const response = await fetch('/api/evaluation/info');
+                const data = await response.json();
+                showEvalInfo(data);
+            } catch (error) {
+                showEvalError("Failed to get evaluation info: " + error.message);
+            }
+        }
+
+        async function runQuickEval() {
+            if (!confirm("Quick evaluation will test 3 queries and take ~30 seconds. Continue?")) return;
+            
+            showEvalLoading("Running quick evaluation (30 seconds)...");
+            try {
+                const response = await fetch('/api/evaluation/quick?search_type=hybrid&use_ai=false', {method: 'POST'});
+                const data = await response.json();
+                showEvalResults("Quick Test Results", data);
+            } catch (error) {
+                showEvalError("Quick evaluation failed: " + error.message);
+            }
+        }
+
+        async function runFullEval() {
+            if (!confirm("Full evaluation will test 8 queries and take 1-2 minutes. Continue?")) return;
+            
+            showEvalLoading("Running full evaluation (1-2 minutes)...");
+            try {
+                const response = await fetch('/api/evaluate?search_type=hybrid&use_ai=false', {method: 'POST'});
+                const data = await response.json();
+                showEvalResults("Full Evaluation Results", data);
+            } catch (error) {
+                showEvalError("Full evaluation failed: " + error.message);
+            }
+        }
+
+        async function runABTest() {
+            if (!confirm("A/B testing will compare all search methods and take 3-5 minutes. This is comprehensive testing. Continue?")) return;
+            
+            showEvalLoading("Running A/B testing (3-5 minutes)...");
+            try {
+                const response = await fetch('/api/ab-test', {method: 'POST'});
+                const data = await response.json();
+                showABResults("A/B Test Results", data);
+            } catch (error) {
+                showEvalError("A/B testing failed: " + error.message);
+            }
+        }
+
+        // Evaluation display functions
+        function showEvalLoading(message) {
+            const div = document.getElementById('evalResults');
+            div.innerHTML = `<div style="color: #007bff; text-align: center; padding: 15px;">🔄 ${message}</div>`;
+            div.style.display = 'block';
+        }
+
+        function showEvalInfo(data) {
+            const div = document.getElementById('evalResults');
+            div.className = 'eval-results';
+            
+            let html = `
+                <strong>📊 Evaluation System Information</strong>
+                <div style="margin: 10px 0;">
+                    <div><strong>Available Tests:</strong></div>
+                    <ul style="margin: 5px 0 0 20px; font-size: 12px;">
+                        <li>Quick Test: ${data.available_tests.quick_test}</li>
+                        <li>Full Evaluation: ${data.available_tests.single_evaluation}</li>
+                        <li>A/B Testing: ${data.available_tests.ab_test}</li>
+                    </ul>
+                </div>
+                <div><strong>Metrics:</strong> ${data.metrics_calculated.join(', ')}</div>
+                <div><strong>Categories:</strong> ${data.evaluation_categories.length} test categories</div>
+                <div class="eval-note">
+                    💡 <strong>For End Users:</strong> ${data.user_guidance.for_end_users}<br>
+                    🔧 <strong>For Developers:</strong> ${data.user_guidance.for_developers}
+                </div>
+            `;
+            
+            div.innerHTML = html;
+            div.style.display = 'block';
+        }
+
+        function showEvalResults(title, data) {
+            const div = document.getElementById('evalResults');
+            div.className = 'eval-results';
+            
+            let html = `<strong>${title}</strong>`;
+            
+            if (data.metrics) {
+                html += `
+                    <div class="eval-metrics">
+                        <div class="eval-metric">
+                            <div class="eval-metric-value">${data.metrics.hit_at_1.percentage}</div>
+                            <div>Hit@1</div>
+                        </div>
+                        <div class="eval-metric">
+                            <div class="eval-metric-value">${data.metrics.hit_at_3.percentage}</div>
+                            <div>Hit@3</div>
+                        </div>
+                        <div class="eval-metric">
+                            <div class="eval-metric-value">${data.metrics.hit_at_5.percentage}</div>
+                            <div>Hit@5</div>
+                        </div>
+                        <div class="eval-metric">
+                            <div class="eval-metric-value">${(data.metrics.mrr.score * 100).toFixed(1)}%</div>
+                            <div>MRR</div>
+                        </div>
+                        <div class="eval-metric">
+                            <div class="eval-metric-value">${data.metrics.response_time.avg_ms.toFixed(1)}ms</div>
+                            <div>Avg Time</div>
+                        </div>
+                    </div>
+                `;
+                
+                html += `<div style="margin-top: 10px;"><strong>MRR Quality:</strong> ${data.metrics.mrr.interpretation}</div>`;
+            }
+            
+            if (data.queries_tested) {
+                html += `<div><strong>Queries Tested:</strong> ${data.queries_tested}</div>`;
+            }
+            
+            if (data.note) {
+                html += `<div class="eval-note">📝 ${data.note}</div>`;
+            }
+            
+            div.innerHTML = html;
+            div.style.display = 'block';
+        }
+
+        function showABResults(title, data) {
+            const div = document.getElementById('evalResults');
+            div.className = 'eval-results';
+            
+            let html = `<strong>${title}</strong>`;
+            
+            if (data.summary) {
+                const summary = data.summary;
+                html += `
+                    <div style="margin: 10px 0;">
+                        <div><strong>🏆 Best Performers:</strong></div>
+                        <ul style="margin: 5px 0 0 20px; font-size: 12px;">
+                            <li><strong>Best Hit@1:</strong> ${summary.best_hit_at_1?.method || 'N/A'}</li>
+                            <li><strong>Best MRR:</strong> ${summary.best_mrr?.method || 'N/A'}</li>
+                            <li><strong>Fastest:</strong> ${summary.fastest?.method || 'N/A'}</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            if (data.recommendations) {
+                html += `
+                    <div><strong>📋 Recommendations:</strong></div>
+                    <ul style="margin: 5px 0 0 20px; font-size: 12px;">
+                `;
+                data.recommendations.forEach(rec => {
+                    html += `<li>${rec}</li>`;
+                });
+                html += `</ul>`;
+            }
+            
+            if (data.detailed_metrics) {
+                html += `<div><strong>Methods Tested:</strong> ${Object.keys(data.detailed_metrics).join(', ')}</div>`;
+            }
+            
+            html += `<div class="eval-note">📊 Complete A/B test comparing all search methods</div>`;
+            
+            div.innerHTML = html;
+            div.style.display = 'block';
+        }
+
+        function showEvalError(message) {
+            const div = document.getElementById('evalResults');
+            div.innerHTML = `<div style="color: #dc3545; text-align: center; padding: 15px;">❌ ${message}</div>`;
+            div.style.display = 'block';
+        }
+
+        // Helper functions
+        function getDifficultyText(level) {
+            const levels = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
+            return levels[level] || 'Unknown';
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function hideResults() {
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('stats').style.display = 'none';
+        }
+
+        function clearResults() {
+            document.getElementById('searchInput').value = '';
+            hideResults();
+            hideError();
+            // Also hide evaluation results when clearing
+            document.getElementById('evalResults').style.display = 'none';
+        }
+
+        // Enter key support
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                search();
+            }
+        });
+
+        // Sample searches
+        function sampleSearch(query) {
+            document.getElementById('searchInput').value = query;
+            search();
+        }
+    </script>
+</body>
+</html>

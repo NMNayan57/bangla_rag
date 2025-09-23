@@ -1,0 +1,807 @@
+{
+  "test_timestamp": "2025-09-23T14:43:20.432648",
+  "detailed_results": {
+    "hybrid_no_ai": {
+      "results": [
+        {
+          "query": "রবীন্দ্রনাথ গীতাঞ্জলি",
+          "retrieved_doc_ids": [
+            "305",
+            "188",
+            "191",
+            "470",
+            "155"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470",
+            "155"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.9565353393554688,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "নোবেল পুরস্কার",
+          "retrieved_doc_ids": [
+            "313",
+            "129",
+            "130",
+            "64",
+            "416"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.0,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "কাব্যগ্রন্থ",
+          "retrieved_doc_ids": [
+            "494",
+            "231",
+            "77",
+            "472",
+            "492"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "209",
+            "448"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.0068416595458984,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "বিজ্ঞান বিষয়ক গ্রন্থ",
+          "retrieved_doc_ids": [
+            "222",
+            "93",
+            "150",
+            "394",
+            "221"
+          ],
+          "relevant_doc_ids": [
+            "222"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.001119613647461,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "চলিত ভাষা",
+          "retrieved_doc_ids": [
+            "286",
+            "63",
+            "146",
+            "355",
+            "80"
+          ],
+          "relevant_doc_ids": [
+            "221"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.99945068359375,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "গদ্য ছন্দ",
+          "retrieved_doc_ids": [
+            "209",
+            "223",
+            "139",
+            "164",
+            "235"
+          ],
+          "relevant_doc_ids": [
+            "209"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.001596450805664,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "প্রথম প্রকাশিত গ্রন্থ",
+          "retrieved_doc_ids": [
+            "448",
+            "213",
+            "275",
+            "191",
+            "325"
+          ],
+          "relevant_doc_ids": [
+            "448"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.0,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        },
+        {
+          "query": "আত্মজীবনী",
+          "retrieved_doc_ids": [
+            "433",
+            "458",
+            "323",
+            "200",
+            "420"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "222"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.0001659393310547,
+          "search_type": "hybrid",
+          "ai_enhanced": false
+        }
+      ],
+      "metrics": {
+        "total_queries": 8,
+        "hit_at_1": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_3": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_5": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "mrr": {
+          "score": 0.5,
+          "interpretation": "Fair"
+        },
+        "response_time": {
+          "avg_ms": 0.7457137107849121,
+          "avg_seconds": 0.0007457137107849121
+        }
+      }
+    },
+    "hybrid_with_ai": {
+      "results": [
+        {
+          "query": "রবীন্দ্রনাথ গীতাঞ্জলি",
+          "retrieved_doc_ids": [
+            "305",
+            "188",
+            "191",
+            "470",
+            "155"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470",
+            "155"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.0,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "নোবেল পুরস্কার",
+          "retrieved_doc_ids": [
+            "313",
+            "129",
+            "130",
+            "64",
+            "416"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.0192394256591797,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "কাব্যগ্রন্থ",
+          "retrieved_doc_ids": [
+            "494",
+            "231",
+            "77",
+            "472",
+            "492"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "209",
+            "448"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.9796619415283203,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "বিজ্ঞান বিষয়ক গ্রন্থ",
+          "retrieved_doc_ids": [
+            "222",
+            "93",
+            "150",
+            "394",
+            "221"
+          ],
+          "relevant_doc_ids": [
+            "222"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.0008811950683594,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "চলিত ভাষা",
+          "retrieved_doc_ids": [
+            "286",
+            "63",
+            "146",
+            "355",
+            "80"
+          ],
+          "relevant_doc_ids": [
+            "221"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.0030269622802734,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "গদ্য ছন্দ",
+          "retrieved_doc_ids": [
+            "209",
+            "223",
+            "139",
+            "164",
+            "235"
+          ],
+          "relevant_doc_ids": [
+            "209"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.004934310913086,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "প্রথম প্রকাশিত গ্রন্থ",
+          "retrieved_doc_ids": [
+            "448",
+            "213",
+            "275",
+            "191",
+            "325"
+          ],
+          "relevant_doc_ids": [
+            "448"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.9915828704833984,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        },
+        {
+          "query": "আত্মজীবনী",
+          "retrieved_doc_ids": [
+            "433",
+            "458",
+            "323",
+            "200",
+            "420"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "222"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.0,
+          "search_type": "hybrid",
+          "ai_enhanced": true
+        }
+      ],
+      "metrics": {
+        "total_queries": 8,
+        "hit_at_1": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_3": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_5": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "mrr": {
+          "score": 0.5,
+          "interpretation": "Fair"
+        },
+        "response_time": {
+          "avg_ms": 0.7499158382415771,
+          "avg_seconds": 0.0007499158382415771
+        }
+      }
+    },
+    "dense_no_ai": {
+      "results": [
+        {
+          "query": "রবীন্দ্রনাথ গীতাঞ্জলি",
+          "retrieved_doc_ids": [
+            "305",
+            "470",
+            "194",
+            "191",
+            "89"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470",
+            "155"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 30.073165893554688,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "নোবেল পুরস্কার",
+          "retrieved_doc_ids": [
+            "130",
+            "129",
+            "313",
+            "64",
+            "89"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 29.036521911621094,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "কাব্যগ্রন্থ",
+          "retrieved_doc_ids": [
+            "494",
+            "77",
+            "492",
+            "433",
+            "431"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "209",
+            "448"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 30.073881149291992,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "বিজ্ঞান বিষয়ক গ্রন্থ",
+          "retrieved_doc_ids": [
+            "222",
+            "93",
+            "150",
+            "394",
+            "221"
+          ],
+          "relevant_doc_ids": [
+            "222"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 30.313491821289062,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "চলিত ভাষা",
+          "retrieved_doc_ids": [
+            "146",
+            "286",
+            "355",
+            "117",
+            "63"
+          ],
+          "relevant_doc_ids": [
+            "221"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 34.3167781829834,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "গদ্য ছন্দ",
+          "retrieved_doc_ids": [
+            "209",
+            "223",
+            "164",
+            "139",
+            "327"
+          ],
+          "relevant_doc_ids": [
+            "209"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 33.09965133666992,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "প্রথম প্রকাশিত গ্রন্থ",
+          "retrieved_doc_ids": [
+            "213",
+            "448",
+            "458",
+            "191",
+            "275"
+          ],
+          "relevant_doc_ids": [
+            "448"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 0.5,
+          "response_time_ms": 28.99622917175293,
+          "search_type": "dense",
+          "ai_enhanced": false
+        },
+        {
+          "query": "আত্মজীবনী",
+          "retrieved_doc_ids": [
+            "433",
+            "323",
+            "420",
+            "458",
+            "200"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "222"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 30.338525772094727,
+          "search_type": "dense",
+          "ai_enhanced": false
+        }
+      ],
+      "metrics": {
+        "total_queries": 8,
+        "hit_at_1": {
+          "score": 0.375,
+          "percentage": "37.5%"
+        },
+        "hit_at_3": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_5": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "mrr": {
+          "score": 0.4375,
+          "interpretation": "Fair"
+        },
+        "response_time": {
+          "avg_ms": 30.781030654907227,
+          "avg_seconds": 0.030781030654907227
+        }
+      }
+    },
+    "sparse_no_ai": {
+      "results": [
+        {
+          "query": "রবীন্দ্রনাথ গীতাঞ্জলি",
+          "retrieved_doc_ids": [
+            "305",
+            "155",
+            "19",
+            "0",
+            "110"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470",
+            "155"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.0068416595458984,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "নোবেল পুরস্কার",
+          "retrieved_doc_ids": [
+            "313",
+            "129",
+            "416",
+            "484",
+            "64"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "470"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.9937286376953125,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "কাব্যগ্রন্থ",
+          "retrieved_doc_ids": [
+            "231",
+            "472",
+            "188",
+            "191",
+            "213"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "209",
+            "448"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 0.0,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "বিজ্ঞান বিষয়ক গ্রন্থ",
+          "retrieved_doc_ids": [
+            "222",
+            "93",
+            "150",
+            "394",
+            "408"
+          ],
+          "relevant_doc_ids": [
+            "222"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.0,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "চলিত ভাষা",
+          "retrieved_doc_ids": [
+            "63",
+            "286",
+            "435",
+            "293",
+            "303"
+          ],
+          "relevant_doc_ids": [
+            "221"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.001596450805664,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "গদ্য ছন্দ",
+          "retrieved_doc_ids": [
+            "209",
+            "235",
+            "139",
+            "223",
+            "164"
+          ],
+          "relevant_doc_ids": [
+            "209"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 0.99945068359375,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "প্রথম প্রকাশিত গ্রন্থ",
+          "retrieved_doc_ids": [
+            "448",
+            "221",
+            "275",
+            "213",
+            "222"
+          ],
+          "relevant_doc_ids": [
+            "448"
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true,
+          "hit_at_5": true,
+          "mrr_score": 1.0,
+          "response_time_ms": 1.0006427764892578,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        },
+        {
+          "query": "আত্মজীবনী",
+          "retrieved_doc_ids": [
+            "458",
+            "200",
+            "433",
+            "420",
+            "323"
+          ],
+          "relevant_doc_ids": [
+            "305",
+            "222"
+          ],
+          "hit_at_1": false,
+          "hit_at_3": false,
+          "hit_at_5": false,
+          "mrr_score": 0.0,
+          "response_time_ms": 1.0008811950683594,
+          "search_type": "sparse",
+          "ai_enhanced": false
+        }
+      ],
+      "metrics": {
+        "total_queries": 8,
+        "hit_at_1": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_3": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "hit_at_5": {
+          "score": 0.5,
+          "percentage": "50.0%"
+        },
+        "mrr": {
+          "score": 0.5,
+          "interpretation": "Fair"
+        },
+        "response_time": {
+          "avg_ms": 0.7503926753997803,
+          "avg_seconds": 0.0007503926753997803
+        }
+      }
+    }
+  },
+  "comparison_summary": {
+    "best_hit_at_1": {
+      "method": "hybrid_no_ai",
+      "score": 0.5
+    },
+    "best_hit_at_3": {
+      "method": "hybrid_no_ai",
+      "score": 0.5
+    },
+    "best_hit_at_5": {
+      "method": "hybrid_no_ai",
+      "score": 0.5
+    },
+    "best_mrr": {
+      "method": "hybrid_no_ai",
+      "score": 0.5
+    },
+    "fastest": {
+      "method": "hybrid_no_ai",
+      "time_ms": 0.7457137107849121
+    },
+    "method_ranking": []
+  },
+  "recommendations": [
+    "🎯 Hybrid search provides the best overall performance (highest MRR)",
+    "⚡ hybrid_no_ai provides excellent response time (<50ms)",
+    "📊 Use Hit@K metrics to monitor search quality over time",
+    "🔬 Run regular A/B tests to validate system improvements",
+    "🎛️ Consider user query patterns when choosing default search method"
+  ]
+}

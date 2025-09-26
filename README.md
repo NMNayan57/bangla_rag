@@ -143,6 +143,14 @@ The simplest way to use the system:
 4. Toggle AI enhancement if needed
 5. View results with relevance scores
 
+#### Example Results
+
+##### Without AI Enhancement
+![Search Results Without AI Enhancement](images/image1.png)
+
+##### With AI Enhancement
+![Search Results With AI Enhancement](images/image2.png)
+
 ### API Usage
 
 #### Basic Search
